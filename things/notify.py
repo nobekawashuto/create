@@ -1,5 +1,7 @@
 import datetime
 import locale
+import schedule
+import time
 
 def Gomi_Sute_Mess():
     locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
@@ -15,3 +17,14 @@ def Gomi_Sute_Mess():
     
     return message
 
+def main():
+    LINE_Notify = LINE_Notify()
+    message=Gomi_Sute_Mess()
+    LINE_Notify.Sent_Image(message)
+
+if __name__ == '__main__':
+    schedule.every().day.at("22:00").do(main)
+    
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
