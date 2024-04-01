@@ -1,10 +1,6 @@
 import datetime
 import locale
 
-
-
-
-
 def Gomi_Sute_Mess():
     locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
     Today = datetime.datetime.now()
