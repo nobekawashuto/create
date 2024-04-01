@@ -12,7 +12,7 @@ class LINE_Notify:
         
     def Sent_Message(self,message):
         payload = {'message':message}
-        requests.post(self.API_url,headers=self.__headers,params=payload)
+        requests.post(self.API_url,headers=self.__headers,params=payload,)
         
     
 
