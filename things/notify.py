@@ -2,6 +2,19 @@ import datetime
 import locale
 import schedule
 import time
+import requests
+
+class LINE_Notify:
+    def __init__(self):
+        self.API_url = 'https://notify-api.line.me/api/notify'
+        self.access_token = 'fFSNqLiMC3rzFt7H8SJpt0g0FDrk9i1Vtz9DtSviZ9m'
+        self.__headers = {'Authorization':'Bearer'+self.access_token}
+        
+    def Sent_Message(self,message):
+        payload = {'message':message}
+        requests.post(self.API_url,headers=self.__headers,params=payload)
+        
+    
 
 def Gomi_Sute_Mess():
     locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
@@ -20,7 +33,7 @@ def Gomi_Sute_Mess():
 def main():
     LINE_Notify = LINE_Notify()
     message=Gomi_Sute_Mess()
-    LINE_Notify.Sent_Image(message)
+    LINE_Notify.Sent_Message(message)
 
 if __name__ == '__main__':
     schedule.every().day.at("22:00").do(main)
